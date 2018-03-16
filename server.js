@@ -23,7 +23,7 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/views/index.html')
 });
 
-//uppercase PORT means it is global, if not available, it will use 3000
+//uppercase PORT means it is global, if not available, it will use 5000
 app.listen(process.env.PORT || 5000, function () {
   console.log('Example app listening at http://localhost:5000/');
 });
