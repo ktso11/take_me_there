@@ -1,12 +1,34 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var db = require("./models")
+var db = require("./models");
+var Post = db.Post;
+var User = db.User;
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 // Configure app
-app.set('views', __dirname + 'views');      // Views directory
+app.use(express.static(__dirname + '/views'));    // Views directory
 app.use(express.static('public'));          // Static directory
 app.use(bodyParser.urlencoded({ extended: true })); // req.body
+app.set('view engine', 'ejs')
+
+// Middleware for auth
+app.use(cookieParser());
+app.use(session({
+  secret: 'techbae', // changed secret key!
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// passport Config
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // Set CORS Headers
 app.use(function(req, res, next) {
@@ -20,7 +42,54 @@ app.use(function(req, res, next) {
 
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/views/index.html')
+ res.render("index", { user: req.user, });
+});
+
+// auth routes
+
+// show signup view
+app.get('/signup', function (req, res) {
+  res.render('signup');
+});
+
+// sign up new user, then log them in
+// hashes and salts password, saves new user to db
+app.post('/signup', function (req, res) {
+  User.register(new User({ username: req.body.username }), req.body.password,
+    function (err, newUser) {
+      if (err){
+        console.log(err)
+      } else {
+        passport.authenticate('local')(req, res, function() {
+          res.redirect('/');
+        })
+    }
+
+  });
+});
+
+app.get('/map', function (req, res) {
+ res.render('map');
+});
+
+// show login view
+app.get('/login', function (req, res) {
+ res.render('login');
+});
+
+// log in user
+app.post('/login', passport.authenticate('local'), function (req, res) {
+  console.log(req.user);
+  res.redirect('/'); // sanity check
+  // res.redirect('/'); // preferred!
+});
+
+// log out user
+app.get('/logout', function (req, res) {
+  console.log("BEFORE logout", JSON.stringify(req.user));
+  req.logout();
+  console.log("AFTER logout", JSON.stringify(req.user));
+  res.redirect('/');
 });
 
 //uppercase PORT means it is global, if not available, it will use 5000

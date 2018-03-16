@@ -7,6 +7,17 @@
 </head>
 
 <body>
+
+  <nav>
+      <% if(!user) { %>
+      <a href="/login">Log in</a>
+      <a href="/signup">Sign up</a>
+    <% } else { %>
+      <div>Welcome, <%= user.username %>!</div>
+      <a href="/logout">Log out</a>
+    <% } %>
+  </nav>
+  
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="/scripts/app.js"></script>
 
@@ -14,4 +25,3 @@ Heleellelelelellllllllo~~~~ WORLD!
 </body>
 
 </html>
-
