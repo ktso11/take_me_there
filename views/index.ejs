@@ -21,7 +21,9 @@
 
 <body class="container">
 
-  <nav class="card-panel purple lighten-2">
+    <% include ../views/partials/nav %>
+    
+  <nav class="card-panel deep orange accent-3">
       <% if(!user) { %>
       <a href="/login">Log in</a>
       <a href="/signup">Sign up</a>
@@ -39,7 +41,7 @@
   <main>
     <div class="Helloworld">
       <h1>Take Me There App </h1>
-      <p> lorem ipsum </p>
+      <p> Explore new geo-locations with our app </p>
     </div>
   </main>
 
