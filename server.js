@@ -40,7 +40,7 @@ app.use(function(req, res, next) {
 
 //routes
 
-
+//show index page
 app.get('/', function(req, res) {
  res.render("index", { user: req.user, });
 });
