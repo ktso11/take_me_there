@@ -22,16 +22,11 @@
 <!-- <body class="container"> -->
 <body>
 
-
-  <nav class="card-panel deep orange accent-3">
-      <% if(!user) { %>
-      <a href="/login">Log in</a>
-      <a href="/signup">Sign up</a>
-    <% } else { %>
-      <div>Welcome, <%= user.username %>!</div>
-      <a href="/logout">Log out</a>
-    <% } %>
+  <nav>
+    <% include ../views/partials/nav %>
   </nav>
+
+
 
 
 <header>
@@ -73,7 +68,7 @@
         <div class="icon-block">
           <h2 class="center light-orange-text"> <i class="fas fa-globe"></i></h2>
           <h5 class="center">Explore</h5>
-          <p class="light"> Explore </p>
+          <p class="light"> Explore new places </p>
           </div>
       </div>
       <div class="col s12 m4">
@@ -83,7 +78,7 @@
           </h2>
           <h5 class="center">Create an Account</h5>
           <p class="light">
-            Create An Account
+            Create an account
           </p>
         </div>
       </div>
@@ -95,13 +90,15 @@
           </h2>
           <h5 class="center">View you Favorites </h5>
           <p class="light">
-            View your Favorites
+            View a list of your favorite places
           </p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
 
 
   </main>
