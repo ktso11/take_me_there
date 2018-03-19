@@ -11,7 +11,11 @@ document.getElementById('submit').addEventListener('click', function() {
     url: unsplash_api +"&query="+address,
     method: "GET",
     success: function(json) {
-      console.log(json)
+      console.log(json);
+      $("#queryImg img").remove();
+      for(let i=0; i < json.results.length; i++){
+         $("#queryImg").append(`<img src=" ${json.results[i].urls.small}"> `);
+      }
     },
     error: function(err){
       console.log("ERROR!", err)
