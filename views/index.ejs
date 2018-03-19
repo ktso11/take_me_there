@@ -5,12 +5,18 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
   <title>Take Me There</title>
   <link rel="stylesheet" href="/styles/main.css">
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+   <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
 
 </head>
 
 <body class="container">
 
-  <nav>
+  <nav class="card-panel purple lighten-2">
       <% if(!user) { %>
       <a href="/login">Log in</a>
       <a href="/signup">Sign up</a>
@@ -35,9 +41,7 @@
   </main>
 
   <footer>
-    Footer
     <% include ../views/partials/footer %>
-
   </footer>
 
 </body>
