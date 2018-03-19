@@ -9,6 +9,11 @@ var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+module.exports = {
+  APPLICATION_ID: process.env.APPLICATION_ID || '22894',
+  SECRET: process.env.SECRET || '77a3c692003ea8fe6fc3a69c14ec944a491157afa58e77137a6c8896df54214a',
+  CALLBACK_URL: process.env.CALLBACK_URL || 'urn:ietf:wg:oauth:2.0:oob'
+};
 // Configure app
 app.use(express.static(__dirname + '/views'));    // Views directory
 app.use(express.static('public'));          // Static directory
