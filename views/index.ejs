@@ -1,14 +1,22 @@
 <html>
 <head>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
   <title>Take Me There</title>
   <link rel="stylesheet" href="/styles/main.css">
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+   <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
 </head>
 
-<body>
+<body class="container">
 
-  <nav>
+  <nav class="card-panel purple lighten-2">
       <% if(!user) { %>
       <a href="/login">Log in</a>
       <a href="/signup">Sign up</a>
@@ -17,11 +25,24 @@
       <a href="/logout">Log out</a>
     <% } %>
   </nav>
-  
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="/scripts/app.js"></script>
 
-Heleellelelelellllllllo~~~~ WORLD!
-</body>
+<header>
+  <% include ../views/partials/header %>
+</header>
 
+  <main>
+    <div class="Helloworld">
+      <h1>Take Me There App </h1>
+      <p> lorem ipsum </p>
+    </div>
+  </main>
+
+  <footer>
+    <% include ../views/partials/footer %>
+  </footer>
+
+</body>
 </html>
