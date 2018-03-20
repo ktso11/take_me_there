@@ -4,6 +4,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
   <title>Take Me There</title>
+
+  <script type="text/javascript" script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" script src="/scripts/app.js"></script>
+
   <link rel="stylesheet" href="/styles/main.css">
     <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -14,33 +18,20 @@
   <!--Let browser know website is optimized for mobile-->
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
 
-  <script type="text/javascript" script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script type="text/javascript" script src="/scripts/app.js"></script>
 
 </head>
 
 <!-- <body class="container"> -->
 <body>
 
-
-  <nav class="card-panel deep orange accent-3">
-      <% if(!user) { %>
-      <a href="/login">Log in</a>
-      <a href="/signup">Sign up</a>
-    <% } else { %>
-      <div>Welcome, <%= user.username %>!</div>
-      <a href="/logout">Log out</a>
-    <% } %>
-  </nav>
-
-
-<header>
-  <% include ../views/partials/header %>
+  <header>
+    <% include ../views/partials/nav %>
+    <% include ../views/partials/header %>
 </header>
 
   <main>
     <div class="parallax-container">
-      <div class="parallax"><%  %></div>
+      <div class="parallax"><img src="./images/vitaly-taranov-105782-unsplash.jpg" width="100%"></div>
       <div class="section no-pad-bot" id="index-banner">
           <div class="container">
               <br />
@@ -66,6 +57,12 @@
   </div>
 </div>
 
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+</script>
+
 <div class="container">
   <div class="section">
     <div class="row">
@@ -73,7 +70,7 @@
         <div class="icon-block">
           <h2 class="center light-orange-text"> <i class="fas fa-globe"></i></h2>
           <h5 class="center">Explore</h5>
-          <p class="light"> Explore </p>
+          <p class="light"> Explore new places </p>
           </div>
       </div>
       <div class="col s12 m4">
@@ -83,7 +80,7 @@
           </h2>
           <h5 class="center">Create an Account</h5>
           <p class="light">
-            Create An Account
+            Create an account
           </p>
         </div>
       </div>
@@ -95,13 +92,15 @@
           </h2>
           <h5 class="center">View you Favorites </h5>
           <p class="light">
-            View your Favorites
+            View a list of your favorite places
           </p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
 
 
   </main>
