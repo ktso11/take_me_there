@@ -24,23 +24,21 @@ var marker;
 
 $('#favoriteForm').on('submit', function(e) {
   e.preventDefault();
-  console.log('new landmark!', $(this).serializeArray());
+  console.log('new landmark!', $(this).serialize());
   var address = document.getElementById('address').value;
   $.ajax({
     method: 'POST',
     url: '/api/landmarks',
-    data: $(this).serializeArray(),
+    data: $(this).serialize(),
     success: newLandmark,
     error: newLandmarkError
   });
 });
 
 function newLandmark(json) {
-var testvalue = $('#landmark').val();
-console.log ("this is test value" + testvalue)
-console.log ("this is json" + json)
+$('#landmark').val();
   allLandmarks.push(json);
-  render();
+  // render();
 }
 function newLandmarkError() {
   console.log("error");
