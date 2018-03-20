@@ -64,3 +64,12 @@ h2{
 #signupspan{
   text-align: right;
 }
+.icon-block p{
+  text-align: center;
+}
+
+.navbar .card-panel{
+  /* top:0; */
+  margin-top: 0;
+  margin-bottom: 0;
+}
