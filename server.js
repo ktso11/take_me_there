@@ -15,7 +15,7 @@ module.exports = {
   CALLBACK_URL: process.env.CALLBACK_URL || 'urn:ietf:wg:oauth:2.0:oob'
 };
 // Configure app
-app.use(express.static(__dirname + '/views'));    // Views directory
+app.set("views", __dirname + '/views');    // Views directory
 app.use(express.static('public'));          // Static directory
 app.use(bodyParser.urlencoded({ extended: true })); // req.body
 app.set('view engine', 'ejs')
