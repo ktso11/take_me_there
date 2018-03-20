@@ -82,6 +82,11 @@ app.get('/login', function (req, res) {
  res.render('login');
 });
 
+app.get('/profile', function (req, res) {
+ res.render('profile');
+ 
+});
+
 // log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
   console.log(req.user);
