@@ -1,14 +1,11 @@
-
-
-
 <div class="navbar-fixed">
-<nav class="card-panel deep orange accent-3">
+  <nav class="card-panel deep orange accent-3">
     <% if(!user){ %>
-    <a href="/login">Log in</a>
-    <a href="/signup">Sign up</a>
-  <% } else { %>
-    <div>Welcome, <%= user.username %>!</div>
-    <a href="/logout">Log out</a>
-  <% } %>
-</nav>
+      <a href="/login">Log in</a>
+      <a href="/signup">Sign up</a>
+    <% } else { %>
+      <div>Welcome, <%= user.username %>!</div>
+      <a href="/logout">Log out</a>
+    <% } %>
+  </nav>
 </div>

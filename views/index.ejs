@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,88 +27,81 @@
 
   <header>
     <% include ../views/partials/nav %>
-    <% include ../views/partials/header %>
-</header>
-
-  <main>
-    <div class="parallax-container">
-      <div class="parallax"><img src="./images/vitaly-taranov-105782-unsplash.jpg" width="100%"></div>
-      <div class="section no-pad-bot" id="index-banner">
+  </header>
+    <main>
+      <div class="parallax-container">
+        <div class="parallax"><img src="./images/vitaly-taranov-105782-unsplash.jpg" width="100%"></div>
+        <div class="section no-pad-bot" id="index-banner">
           <div class="container">
-              <br />
-              <br />
-              <h1 class="header center orange-text"> Take Me There</h1>
-              <div class="row center">
-                <h3 class="header col s12 light"> Find your next adventure!</h3>
-                <p>Explore the world and create a list of your next go-to places.</p>
+            <br />
+            <br />
+            <h1 class="header center orange-text"> Take Me There</h1>
+
+            <div class="row center">
+              <h3 class="header col s12 light"> Find your next adventure!</h3>
+              <p>Explore the world and create a list of your next go-to places.</p>
+            </div>
+
+            <div class="row center">
+              <p>Optional TBD Buttons </p>
+              <% if(!user) { %>
+                <a href="/login">Log in</a>
+                <a href="/signup">Sign up</a>
+              <% } else { %>
+                <div>Welcome, <%= user.username %>!</div>
+                <a href="/logout">Log out</a>
+              <% } %>
+            </div>
+
           </div>
-
-      <div class="row center">
-                <p>Optional TBD Buttons </p>
-        <% if(!user) { %>
-        <a href="/login">Log in</a>
-        <a href="/signup">Sign up</a>
-      <% } else { %>
-        <div>Welcome, <%= user.username %>!</div>
-        <a href="/logout">Log out</a>
-      <% } %>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-      $('.parallax').parallax();
-    });
-</script>
-
-<div class="container">
-  <div class="section">
-    <div class="row">
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center light-orange-text"> <i class="fas fa-globe"></i></h2>
-          <h5 class="center">Explore</h5>
-          <p class="light"> Explore new places </p>
-          </div>
-      </div>
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center light-orange-text">
-            <i class="far fa-user-circle"></i>
-          </h2>
-          <h5 class="center">Create an Account</h5>
-          <p class="light">
-            Create an account
-          </p>
         </div>
       </div>
 
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center light-orange-text">
-            <i class="far fa-star"></i>
-          </h2>
-          <h5 class="center">View you Favorites </h5>
-          <p class="light">
-            View a list of your favorite places
-          </p>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('.parallax').parallax();
+        });
+      </script>
+
+      <div class="container">
+        <div class="section">
+          <div class="row">
+
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center light-orange-text"> <i class="fas fa-globe"></i></h2>
+                <h5 class="center">Explore</h5>
+                <p class="light"> Explore new places </p>
+              </div>
+            </div>
+
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center light-orange-text">
+                  <i class="far fa-user-circle"></i>
+                </h2>
+                <h5 class="center">Create an Account</h5>
+                <p class="light">Create an account</p>
+              </div>
+            </div>
+
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center light-orange-text">
+                  <i class="far fa-star"></i>
+                </h2>
+                <h5 class="center">View you Favorites </h5>
+                <p class="light">View a list of your favorite places</p>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-  </main>
+    </main>
 
   <footer>
     <% include ../views/partials/footer %>
   </footer>
-
 </body>
 </html>
