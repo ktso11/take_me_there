@@ -113,7 +113,7 @@ app.post('/api/landmarks', function (req, res) {
 
 app.get('/api/landmarks', function(req, res) {
     db.Landmark.find({}, function(err, allLandmarks) {
-        res.json({ todos: allLandmarks });
+        res.json({ fav_places: allLandmarks });
     });
 });
 
