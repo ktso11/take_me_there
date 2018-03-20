@@ -66,7 +66,7 @@ app.post('/signup', function (req, res) {
         console.log(err)
       } else {
         passport.authenticate('local')(req, res, function() {
-          res.redirect('/');
+          res.redirect('/map');
         })
     }
 

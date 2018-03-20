@@ -28,6 +28,8 @@ var marker;
 //   // $('#bookTarget').text('Failed to load books, is the server working?');
 // }
 
+
+//CREATE Favorite
 $('#favoriteForm').on('submit', function(e) {
   e.preventDefault();
   console.log('new landmark!', $(this).serialize());
@@ -50,10 +52,8 @@ function newLandmarkError() {
   console.log("error");
 }
 
-
+//unsplash API
 var unsplash_api = "https://api.unsplash.com/search/photos?client_id=8690af73a2e6eef28b8ec898ca3245328210c6d5f48165ed28929570ddb8edf8&page=1&per_page=13"
-
-
 $('#submit').on('click', function() {
   var address = document.getElementById('address').value;
   $("h2").html(address);

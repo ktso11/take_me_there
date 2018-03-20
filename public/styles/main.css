@@ -48,3 +48,19 @@ h2{
   display: flex;
   justify-content: center;
 }
+
+#navspan{
+  display: flex;
+  flex-direction: row;
+}
+
+#navspan span{
+  width: 50%;
+}
+
+#loginspan{
+  text-align: right;
+}
+#signupspan{
+  text-align: right;
+}
