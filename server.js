@@ -84,7 +84,6 @@ app.get('/login', function (req, res) {
 
 app.get('/profile', function (req, res) {
  res.render('profile');
- 
 });
 
 // log in user
