@@ -2,8 +2,11 @@ html, body {
     height: 100%;
     margin: 0 auto ;
     right: 0;
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
 
 }
+
+
 #queryImg {
   display: flex;
   margin-left: 0;
