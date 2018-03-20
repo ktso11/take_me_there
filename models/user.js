@@ -8,7 +8,7 @@ var UserSchema = new Schema({
   password: String,
   email: String,
   location: String,
-  landmark: {type: Schema.Types.ObjectId, ref: 'Landmark'} //referencing schema in a schema
+  landmark: [{type: Schema.Types.ObjectId, ref: 'Landmark'}] //referencing schema in a schema
 });
 
 UserSchema.plugin(passportLocalMongoose);

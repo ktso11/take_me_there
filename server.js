@@ -83,7 +83,24 @@ app.get('/login', function (req, res) {
 });
 
 app.get('/profile', function (req, res) {
- res.render('profile');
+  if(!req.user){
+    res.render('login');
+  }
+  db.User.findOne({'_id' : req.user._id})
+    .populate('landmark')
+    .exec(function(err, currUser){
+      if(err){
+        console.log("Error finding user in database");
+        res.render('login');
+      }
+      if(currUser.landmark.length > 0){
+        console.log(currUser.landmark);
+        res.render("profile", {currUser: currUser, favs: currUser.landmark});
+      }
+      else {
+        console.log("currUser has no favorites yet");
+      }
+  });
 });
 
 // log in user
@@ -104,10 +121,19 @@ app.get('/logout', function (req, res) {
 app.post('/api/landmarks', function (req, res) {
   // create new landmark with form data (`req.body`)
   var newFav = new db.Landmark(req.body);
-  newFav.save(function(err, savedTodo){
+  newFav.save(function(err, savedLandmark){
     if(err){res.status(500).json({"ERR": err});}
-    console.log(savedTodo);
-    res.status(200).json(savedTodo);
+    console.log(savedLandmark);
+    db.User.findOne({'_id' : req.user._id}, function(err, currUser){
+      if(err){
+        console.log("Error finding user in database when adding fav");
+      }
+      currUser.landmark.push(savedLandmark);
+      currUser.save(function(err, savedUser){
+        if(err){ console.log("Error saving user back to db");}
+      });
+    });
+    res.status(200).json(savedLandmark);
   });
 })
 
