@@ -54,7 +54,7 @@ app.get('/', function(req, res) {
 
 // show signup view
 app.get('/signup', function (req, res) {
-  res.render('signup');
+  res.render('signup', {user: req.user});
 });
 
 // sign up new user, then log them in
@@ -79,7 +79,7 @@ app.get('/map', function (req, res) {
 
 // show login view
 app.get('/login', function (req, res) {
- res.render('login');
+ res.render('login', {user: req.user});
 });
 
 app.get('/profile', function (req, res) {
