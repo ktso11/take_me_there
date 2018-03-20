@@ -29,12 +29,14 @@
     <% include ../views/partials/nav %>
   </header>
     <main>
+
       <div class="parallax-container">
-        <div class="parallax"><img src="./images/vitaly-taranov-105782-unsplash.jpg" width="100%"></div>
+        <div class="parallax"><img src="images/vitaly-taranov-105782-unsplash.jpg" width="100%"></div>
         <div class="section no-pad-bot" id="index-banner">
           <div class="container">
             <br />
             <br />
+            <br>
             <h1 class="header center orange-text"> Take Me There</h1>
 
             <div class="row center">
@@ -42,26 +44,11 @@
               <p>Explore the world and create a list of your next go-to places.</p>
             </div>
 
-            <div class="row center">
-              <p>Optional TBD Buttons </p>
-              <% if(!user) { %>
-                <a href="/login">Log in</a>
-                <a href="/signup">Sign up</a>
-              <% } else { %>
-                <div>Welcome, <%= user.username %>!</div>
-                <a href="/logout">Log out</a>
-              <% } %>
-            </div>
 
           </div>
         </div>
       </div>
 
-      <script type="text/javascript">
-        $(document).ready(function(){
-          $('.parallax').parallax();
-        });
-      </script>
 
       <div class="container">
         <div class="section">
@@ -71,7 +58,7 @@
               <div class="icon-block">
                 <h2 class="center light-orange-text"> <i class="fas fa-globe"></i></h2>
                 <h5 class="center">Explore</h5>
-                <p class="light"> Explore new places </p>
+                <p class="light"> Search new places around the world and view associated geotags</p>
               </div>
             </div>
 
@@ -81,7 +68,7 @@
                   <i class="far fa-user-circle"></i>
                 </h2>
                 <h5 class="center">Create an Account</h5>
-                <p class="light">Create an account</p>
+                <p class="light">Create an account to access your profile and create your list of places to explore</p>
               </div>
             </div>
 
@@ -90,14 +77,21 @@
                 <h2 class="center light-orange-text">
                   <i class="far fa-star"></i>
                 </h2>
-                <h5 class="center">View you Favorites </h5>
-                <p class="light">View a list of your favorite places</p>
+                <h5 class="center">Save your Favorites</h5>
+                <p class="light">As a user you can log in to your profile and view a list of the places you've saved</p>
               </div>
             </div>
 
           </div>
         </div>
       </div>
+
+<br>
+<br>
+      <div class="parallax-container">
+        <div class="parallax"><img src="images/hikers.jpg"></div>
+      </div>
+
     </main>
 
   <footer>

@@ -5,6 +5,12 @@ console.log("Sanity Check: JS is working!");
 var allLandmarks = [];
 var marker;
 
+  // $('.parallax').parallax();
+  $(document).ready(function(){
+    $('.parallax').parallax();
+  });
+
+
 // $.ajax({
 //   method: 'GET',
 //   url: '/api/landmarks',
