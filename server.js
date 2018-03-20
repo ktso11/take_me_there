@@ -89,7 +89,7 @@ app.get('/profile', function (req, res) {
 // log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
   console.log(req.user);
-  res.redirect('/'); // sanity check
+  res.redirect('/map'); // sanity check
   // res.redirect('/'); // preferred!
 });
 
@@ -103,18 +103,28 @@ app.get('/logout', function (req, res) {
 
 app.post('/api/landmarks', function (req, res) {
   // create new landmark with form data (`req.body`)
-  var newFav = new db.Landmark({
-    name: req.body.landmark
+  var newFav = new db.Landmark(req.body);
+  newFav.save(function(err, savedTodo){
+    if(err){res.status(500).json({"ERR": err});}
+    console.log(savedTodo);
+    res.status(200).json(savedTodo);
   });
 })
 
-app.get('/api/landmarks', function (req, res) {
-
-    // .exec(function(err, landmarks) {
-      // if (err) { return console.log("index error: " + err); }
-      res.json(landmarks);
-  // });
+app.get('/api/landmarks', function(req, res) {
+    db.Landmark.find({}, function(err, allLandmarks) {
+        res.json({ fav_places: allLandmarks });
+    });
 });
+
+
+
+// app.get('/api/landmarks', function (req, res) {
+//     // .exec(function(err, landmarks) {
+//       // if (err) { return console.log("index error: " + err); }
+//       res.json(landmarks);
+//   // });
+// });
 //uppercase PORT means it is global, if not available, it will use 5000
 app.listen(process.env.PORT || 5000, function () {
   console.log('Example app listening at http://localhost:5000/');
