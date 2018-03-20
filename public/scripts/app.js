@@ -47,7 +47,7 @@ function newLandmarkError() {
 }
 
 
-var unsplash_api = "https://api.unsplash.com/search/photos?client_id=68b75d68a2c82df131747fe097b9c8350a9c53442c1d891c93387908ee966653&page=1&per_page=13"
+var unsplash_api = "https://api.unsplash.com/search/photos?client_id=8690af73a2e6eef28b8ec898ca3245328210c6d5f48165ed28929570ddb8edf8&page=1&per_page=13"
 
 
 $('#submit').on('click', function() {
