@@ -74,7 +74,7 @@ app.post('/signup', function (req, res) {
 });
 
 app.get('/map', function (req, res) {
- res.render('map');
+ res.render('map', {user: req.user});
 });
 
 // show login view
