@@ -36,9 +36,9 @@ $('#favoriteForm').on('submit', function(e) {
 });
 
 function newLandmark(json) {
-$('#landmark').val();
+console.log ("this is json" , json)
   allLandmarks.push(json);
-  // render();
+  render();
 }
 function newLandmarkError() {
   console.log("error");
