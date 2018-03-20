@@ -89,7 +89,7 @@ app.get('/profile', function (req, res) {
 // log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
   console.log(req.user);
-  res.redirect('/'); // sanity check
+  res.redirect('/map'); // sanity check
   // res.redirect('/'); // preferred!
 });
 
@@ -103,13 +103,16 @@ app.get('/logout', function (req, res) {
 
 app.post('/api/landmarks', function (req, res) {
   // create new landmark with form data (`req.body`)
-  var newFav = new db.Landmark({
-    name: req.body.landmark
+  var newFav = new db.Landmark(req.body.landmark);
+  newFav.save(function(err, savedTodo){
+    res.json(savedTodo);
   });
+
 })
+//db.landmark.create
+
 
 app.get('/api/landmarks', function (req, res) {
-
     // .exec(function(err, landmarks) {
       // if (err) { return console.log("index error: " + err); }
       res.json(landmarks);
