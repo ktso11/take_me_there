@@ -3,6 +3,7 @@
 $(document).ready(function(){
 console.log("Sanity Check: JS is working!");
 var allLandmarks = [];
+var marker;
 
 // $.ajax({
 //   method: 'GET',
@@ -88,10 +89,13 @@ $('#submit').on('click', function() {
   function geocodeAddress(geocoder, resultsMap) {
     var address = document.getElementById('address').value;
     // setMapOnAll(null);
+    if(marker) {
+      marker.setMap(null);
+    }
     geocoder.geocode({'address': address}, function(results, status) {
       if (status === 'OK') {
         resultsMap.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
           map: resultsMap,
           position: results[0].geometry.location
         });
