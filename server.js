@@ -97,12 +97,20 @@ app.get('/logout', function (req, res) {
   res.redirect('/');
 });
 
-app.post('/api/landmark', function (req, res) {
-  // create new book with form data (`req.body`)
+app.post('/api/landmarks', function (req, res) {
+  // create new landmark with form data (`req.body`)
   var newFav = new db.Landmark({
-    name: req.body.address
+    name: req.body.landmark
   });
 })
+
+app.get('/api/landmarks', function (req, res) {
+
+    // .exec(function(err, landmarks) {
+      // if (err) { return console.log("index error: " + err); }
+      res.json(landmarks);
+  // });
+});
 //uppercase PORT means it is global, if not available, it will use 5000
 app.listen(process.env.PORT || 5000, function () {
   console.log('Example app listening at http://localhost:5000/');
