@@ -84,7 +84,7 @@ app.get('/login', function (req, res) {
 
 app.get('/profile', function (req, res) {
   if(!req.user){
-    res.render('login');
+    res.redirect('/login');
   }
   db.User.findOne({'_id' : req.user._id})
     .populate('landmark')
@@ -95,7 +95,7 @@ app.get('/profile', function (req, res) {
       }
       if(currUser.landmark.length > 0){
         console.log(currUser.landmark);
-        res.render("profile", {currUser: currUser, favs: currUser.landmark});
+        res.render("profile", {user: req.user, currUser: currUser, favs: currUser.landmark});
       }
       else {
         console.log("currUser has no favorites yet");
