@@ -9,11 +9,11 @@ var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-module.exports = {
-  APPLICATION_ID: process.env.APPLICATION_ID || '22894',
-  SECRET: process.env.SECRET || '77a3c692003ea8fe6fc3a69c14ec944a491157afa58e77137a6c8896df54214a',
-  CALLBACK_URL: process.env.CALLBACK_URL || 'urn:ietf:wg:oauth:2.0:oob'
-};
+// module.exports = {
+//   APPLICATION_ID: process.env.APPLICATION_ID || '22894',
+//   SECRET: process.env.SECRET || '77a3c692003ea8fe6fc3a69c14ec944a491157afa58e77137a6c8896df54214a',
+//   CALLBACK_URL: process.env.CALLBACK_URL || 'urn:ietf:wg:oauth:2.0:oob'
+// };
 // Configure app
 app.set("views", __dirname + '/views');    // Views directory
 app.use(express.static('public'));          // Static directory
@@ -120,21 +120,42 @@ app.get('/logout', function (req, res) {
 
 app.post('/api/landmarks', function (req, res) {
   // create new landmark with form data (`req.body`)
-  var newFav = new db.Landmark(req.body);
-  newFav.save(function(err, savedLandmark){
-    if(err){res.status(500).json({"ERR": err});}
-    console.log(savedLandmark);
-    db.User.findOne({'_id' : req.user._id}, function(err, currUser){
-      if(err){
-        console.log("Error finding user in database when adding fav");
-      }
-      currUser.landmark.push(savedLandmark);
-      currUser.save(function(err, savedUser){
-        if(err){ console.log("Error saving user back to db");}
+  db.Landmark.findOne({'name': req.body.name}, function(err, landmark){
+    if (err) {
+      return console.log(err);
+    }
+    // if that landmark doesn't exist yet, create a new one
+    if (landmark === null) {
+      var newFav = new db.Landmark(req.body);
+      newFav.save(function(err, savedLandmark){
+        if(err){res.status(500).json({"ERR": err});}
+        console.log(savedLandmark);
+        db.User.findOne({'_id' : req.user._id}, function(err, currUser){
+          if(err){
+            console.log("Error finding user in database when adding fav");
+          }
+          currUser.landmark.push(savedLandmark);
+          currUser.save(function(err, savedUser){
+            if(err){ console.log("Error saving user back to db");}
+          });
+        });
+        res.status(200).json(savedLandmark);
       });
-    });
-    res.status(200).json(savedLandmark);
+    } else {
+      //save existing landmark to user
+      db.User.findOne({'_id' : req.user._id}, function(err, currUser){
+        if(err){
+          console.log("Error finding user in database when adding fav");
+        }
+        currUser.landmark.push(landmark);
+        currUser.save(function(err, savedUser){
+          if(err){ console.log("Error saving user back to db");}
+        });
+      });
+      res.status(200).json(landmark);
+    }
   });
+
 })
 
 app.get('/api/landmarks', function(req, res) {
