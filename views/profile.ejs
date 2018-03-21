@@ -1,11 +1,58 @@
-<h2>My Profile </h2>
+<!DOCTYPE html>
+<html>
 
-<p>My username: <%= currUser.username %></p>
-<hr>
-<h3>My Favorite Places</h3>
-<ul id="favPlaces">
-  <% for(var i=0; i < favs.length; i++){ %>
-  <li> <%= favs[i].name %> </li>
-  <% } %>
+<head>
+  <title>Profile</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+
+  <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
+
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+   <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <!--Let browser know website is optimized for mobile-->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJwf9SISzx0464yybWIMGSDFNNxA8Dtv8&callback=initMap">
+  </script>
+  <script src="/scripts/app.js"></script>
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- <script src="/scripts/unsplash.js"></script> -->
+
+</head>
+
+<body>
+
+  <%- include('./partials/nav', {user: user}); %>
+
+<div class="container">
+  <h3>My Profile </h3>
+</div>
+
+
+<div class="parallax-container">
+  <div class="parallax"><img src="images/travelbackpack.jpg"></div>
+  <div class="row center">
+    <p>My username: <%= currUser.username %></p>
+    <hr>
+    <h3>My Favorite Places</h3>
+      <ul id="favPlaces">
+        <% for(var i=0; i < favs.length; i++){ %>
+      <li> <%= favs[i].name %> </li>
+        <% } %>
 <!-- <li>Golden Gate Bridge</li> -->
-</ul>
+      </ul>
+    </div>
+  </div>
+  </div>
+</div>
+
+    <% include ../views/partials/footer %>
+
+</body>
+</html>
